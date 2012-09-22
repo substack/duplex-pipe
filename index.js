@@ -106,7 +106,7 @@ Stream.prototype.pipe = function(dest, options) {
   source.on('end', cleanup);
   source.on('close', cleanup);
 
-  dest.on('end', cleanup);
+  if (!dest.readable) dest.on('end', cleanup);
   dest.on('close', cleanup);
 
   dest.emit('pipe', source);
