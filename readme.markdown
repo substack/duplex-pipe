@@ -9,6 +9,8 @@ per
 This is exactly the same as node 0.8 core Stream except that duplex-pipe will
 not do `dest.on('end', cleanup)` if `dest` is readable.
 
+Plus there is another hack to remove cleanup listeners when piped to.
+
 # install
 
 With [npm](https://npmjs.org) do:

@@ -23,7 +23,17 @@ var events = require('events');
 var util = require('util');
 
 function Stream() {
-  events.EventEmitter.call(this);
+  var self = this;
+  events.EventEmitter.call(self);
+  
+  self.on('pipe', function (src) {
+    // hack to remove the cleanup handler on 'end' from the core pipe() implementation
+    var fns = self.listeners('end');
+    var fn = fns[fns.length - 1];
+    if (fn.name === 'cleanup') {
+      self.removeListener('end', fn);
+    }
+  });
 }
 util.inherits(Stream, events.EventEmitter);
 module.exports = Stream;
