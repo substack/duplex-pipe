@@ -1,6 +1,6 @@
 {
     "name" : "duplex-pipe",
-    "version" : "0.0.1",
+    "version" : "0.0.2",
     "description" : "a friendlier .pipe() for duplex streams that doesn't do cleanup on 'end'",
     "main" : "index.js",
     "dependencies" : {},

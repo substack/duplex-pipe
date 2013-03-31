@@ -30,7 +30,7 @@ function Stream() {
     // hack to remove the cleanup handler on 'end' from the core pipe() implementation
     var fns = self.listeners('end');
     var fn = fns[fns.length - 1];
-    if (fn.name === 'cleanup') {
+    if (fn && fn.name === 'cleanup') {
       self.removeListener('end', fn);
     }
   });
